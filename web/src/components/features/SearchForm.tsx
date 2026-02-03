@@ -1,81 +1,154 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useRouter } from 'next/navigation';
-import { setSearchCriteria } from '@/store/slices/searchSlice';
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
+import { setSearchCriteria } from "@/store/slices/searchSlice";
 
 export default function SearchForm() {
-    const dispatch = useDispatch();
-    const router = useRouter();
+  const dispatch = useDispatch();
+  const router = useRouter();
 
-    const [formData, setFormData] = useState({
-        city: '',
-        pickupDate: '',
-        returnDate: '',
-    });
+  const [formData, setFormData] = useState({
+    city: "",
+    pickupDate: "",
+    returnDate: "",
+  });
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        dispatch(setSearchCriteria(formData));
-        router.push('/results');
-    };
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    dispatch(setSearchCriteria(formData));
+    router.push("/results");
+  };
 
-    return (
-        <div className="bg-white p-6 rounded-lg shadow-lg max-w-4xl mx-auto -mt-16 relative z-10 border border-gray-100">
-            <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
-                <div className="flex flex-col gap-1">
-                    <label className="text-sm font-semibold text-gray-700">Ciudad de Recogida</label>
-                    <select
-                        name="city"
-                        value={formData.city}
-                        onChange={handleChange}
-                        className="p-3 border text-black border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
-                        required
-                    >
-                        <option value="">Seleccionar ciudad</option>
-                        <option value="Madrid">Madrid</option>
-                        <option value="Barcelona">Barcelona</option>
-                        <option value="Valencia">Valencia</option>
-                        <option value="Sevilla">Sevilla</option>
-                    </select>
-                </div>
-
-                <div className="flex flex-col gap-1">
-                    <label className="text-sm font-semibold text-gray-700">Fecha Recogida</label>
-                    <input
-                        type="date"
-                        name="pickupDate"
-                        value={formData.pickupDate}
-                        onChange={handleChange}
-                        className="p-3 border text-black border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
-                        required
-                    />
-                </div>
-
-                <div className="flex flex-col gap-1">
-                    <label className="text-sm font-semibold text-gray-700">Fecha Devolución</label>
-                    <input
-                        type="date"
-                        name="returnDate"
-                        value={formData.returnDate}
-                        onChange={handleChange}
-                        className="p-3 border text-black border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
-                        required
-                    />
-                </div>
-
-                <button
-                    type="submit"
-                    className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-200 shadow-md"
-                >
-                    Buscar Auto
-                </button>
-            </form>
+  return (
+    <div className="w-full rounded-2xl border border-blue-100/40 bg-white p-6 shadow-2xl">
+      <form
+        onSubmit={handleSubmit}
+        className="grid grid-cols-1 gap-4 md:grid-cols-[1.4fr_1fr_1fr_auto] md:items-end"
+      >
+        <div className="flex flex-col gap-2">
+          <label className="text-xs font-semibold uppercase tracking-widest text-gray-500">
+            Localidad de Recogida
+          </label>
+          <div className="flex items-center gap-3 rounded-xl border border-gray-200 bg-gray-50 px-4 py-3">
+            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-blue-100 text-blue-700">
+              <svg
+                className="h-5 w-5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M12 22s7-7 7-12a7 7 0 1 0-14 0c0 5 7 12 7 12Z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+            </span>
+            <select
+              name="city"
+              value={formData.city}
+              onChange={handleChange}
+              className="w-full bg-transparent text-sm font-semibold text-gray-900 outline-none"
+              required
+            >
+              <option value="">Seleccionar ciudad</option>
+              <option value="Madrid">Madrid</option>
+              <option value="Barcelona">Barcelona</option>
+              <option value="Valencia">Valencia</option>
+              <option value="Sevilla">Sevilla</option>
+            </select>
+          </div>
         </div>
-    );
+
+        <div className="flex flex-col gap-2">
+          <label className="text-xs font-semibold uppercase tracking-widest text-gray-500">
+            Recogida
+          </label>
+          <div className="flex items-center gap-3 rounded-xl border border-gray-200 bg-gray-50 px-4 py-3">
+            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-blue-100 text-blue-700">
+              <svg
+                className="h-5 w-5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+              </svg>
+            </span>
+            <input
+              type="date"
+              name="pickupDate"
+              value={formData.pickupDate}
+              onChange={handleChange}
+              className="w-full bg-transparent text-sm font-semibold text-gray-900 outline-none"
+              required
+            />
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <label className="text-xs font-semibold uppercase tracking-widest text-gray-500">
+            Devolución
+          </label>
+          <div className="flex items-center gap-3 rounded-xl border border-gray-200 bg-gray-50 px-4 py-3">
+            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-blue-100 text-blue-700">
+              <svg
+                className="h-5 w-5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+              </svg>
+            </span>
+            <input
+              type="date"
+              name="returnDate"
+              value={formData.returnDate}
+              onChange={handleChange}
+              className="w-full bg-transparent text-sm font-semibold text-gray-900 outline-none"
+              required
+            />
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          className="flex h-[52px] items-center justify-center rounded-xl bg-blue-600 px-6 text-sm font-bold text-white shadow-lg transition-colors hover:bg-blue-700"
+        >
+          Buscar
+        </button>
+      </form>
+
+      <div className="mt-4 flex flex-wrap items-center justify-between gap-4 text-xs text-gray-500">
+        <label className="flex items-center gap-2">
+          <input type="checkbox" className="h-4 w-4 rounded border-gray-300" />
+          Deseo regresar el auto en otra localidad
+        </label>
+        <span className="font-semibold text-blue-600">
+          Rebajas hasta el 40% en USA
+        </span>
+      </div>
+    </div>
+  );
 }
