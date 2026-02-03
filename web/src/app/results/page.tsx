@@ -1,11 +1,7 @@
 
 'use client';
 
-<<<<<<< HEAD
-import { useEffect } from 'react';
-=======
 import { useEffect, useState } from 'react';
->>>>>>> cambios-entrevista
 import { useDispatch, useSelector } from 'react-redux'; // Hooks de Redux para estado global
 import { RootState, AppDispatch } from '@/store/store'; // Tipos de Redux
 import { fetchVehicles, selectVehicle, Vehicle } from '@/store/slices/vehiclesSlice'; // Acciones y thunks de vehículos

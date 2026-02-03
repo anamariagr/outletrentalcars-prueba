@@ -17,7 +17,6 @@ export default function SearchForm() {
     returnDate: search.returnDate || "",
   });
 
-  // Si el store cambia (por ejemplo, al volver de summary), actualiza el formulario
   useEffect(() => {
     setFormData({
       city: search.city || "",

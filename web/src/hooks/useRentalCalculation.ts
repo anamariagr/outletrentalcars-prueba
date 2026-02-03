@@ -8,7 +8,6 @@ interface RentalCalculationResult {
 
 /**
  * Hook personalizado para cálculo de precios de alquiler
- * Delega la lógica de negocio al domain layer
  */
 export function useRentalCalculation(
     pricePerDay: number | string | undefined,

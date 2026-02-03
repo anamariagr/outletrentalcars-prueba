@@ -1,4 +1,3 @@
-// Representa el modelo de negocio de una reserva
 import { Vehicle } from './Vehicle';
 
 export interface Reservation {
