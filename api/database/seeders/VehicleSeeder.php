@@ -12,54 +12,95 @@ class VehicleSeeder extends Seeder
      */
     public function run(): void
     {
-        // Economy / Compact
+        // Autos para Los Cabos
         \App\Models\Vehicle::create([
-            'name' => 'Chevrolet Spark',
-            'price' => 35.00,
-            'image' => 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=800&q=80',
-            'description' => 'Compacto económico, ideal para moverse por la ciudad con bajo consumo.',
-            'transmission' => 'Automatic',
-            'seats' => 4,
-        ]);
-
-        // Intermediate / Sedan
-        \App\Models\Vehicle::create([
-            'name' => 'Toyota Camry 2024',
-            'price' => 60.00,
-            'image' => 'https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=800&q=80',
-            'description' => 'Sedán espacioso y confortable, perfecto para viajes largos en carretera.',
-            'transmission' => 'Automatic',
+            'name' => 'VOLKSWAGEN Jetta',
+            'price' => 259907,
+            'image' => 'https://dce.outletrentalcars.com/vehicle_agency/ZE/SCAR_US.webp',
+            'description' => 'Estándar, 5 pasajeros, 3 maletas, A/C, transmisión automática. Ideal para recorrer Los Cabos con comodidad.',
+            'transmission' => 'Automática',
             'seats' => 5,
         ]);
 
-        // SUV
         \App\Models\Vehicle::create([
-            'name' => 'Ford Explorer SUV',
-            'price' => 95.00,
-            'image' => 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80',
-            'description' => 'Camioneta robusta con gran espacio para equipaje y familia.',
-            'transmission' => 'Automatic',
-            'seats' => 7,
+            'name' => 'FORD Escape',
+            'price' => 324588,
+            'image' => 'https://dce.outletrentalcars.com/vehicle_agency/ZI/IFAR_US.webp',
+            'description' => 'SUV mediana, 5 pasajeros, 2 maletas, A/C, transmisión automática. Perfecta para aventuras en Los Cabos.',
+            'transmission' => 'Automática',
+            'seats' => 5,
         ]);
 
-        // Convertible / Sport
         \App\Models\Vehicle::create([
-            'name' => 'Ford Mustang Convertible',
-            'price' => 130.00,
-            'image' => 'https://images.unsplash.com/photo-1584345604476-8ec5e12e42dd?auto=format&fit=crop&w=800&q=80',
-            'description' => 'Disfruta del sol y la potencia con este icónico deportivo americano.',
-            'transmission' => 'Automatic',
+            'name' => 'CHEVROLET Spark',
+            'price' => 268936,
+            'image' => 'https://dce.outletrentalcars.com/vehicle_agency/ZE/ECAR_US.webp',
+            'description' => 'Económico, 4 pasajeros, 2 maletas, A/C, transmisión automática. Bajo consumo, ideal para ciudad.',
+            'transmission' => 'Automática',
             'seats' => 4,
         ]);
-        
-        // Minivan
+
         \App\Models\Vehicle::create([
-            'name' => 'Chrysler Pacifica',
-            'price' => 110.00,
-            'image' => 'https://images.unsplash.com/photo-1612057404289-4ba6965dc24a?auto=format&fit=crop&w=800&q=80', // Placeholder using a van-like or generic interior/exterior if specific van unavailable
-            'description' => 'La opción definitiva para familias grandes, con máximo confort y espacio.',
-            'transmission' => 'Automatic',
-            'seats' => 8,
+            'name' => 'CHEVROLET Malibu',
+            'price' => 274894,
+            'image' => 'https://dce.outletrentalcars.com/vehicle_agency/ZE/FCAR_US.webp',
+            'description' => 'Full-size, 5 pasajeros, 4 maletas, A/C, transmisión automática. Espacioso y cómodo.',
+            'transmission' => 'Automática',
+            'seats' => 5,
+        ]);
+
+        \App\Models\Vehicle::create([
+            'name' => 'MAZDA 3',
+            'price' => 275375,
+            'image' => 'https://dce.outletrentalcars.com/vehicle_agency/ZE/ICAR_US.webp',
+            'description' => 'Intermedio, 5 pasajeros, 3 maletas, A/C, transmisión automática. Excelente para viajes en pareja o familia.',
+            'transmission' => 'Automática',
+            'seats' => 5,
+        ]);
+
+        \App\Models\Vehicle::create([
+            'name' => 'KIA Soul',
+            'price' => 286623,
+            'image' => 'https://dce.outletrentalcars.com/vehicle_agency/ZI/CCAR_US.webp',
+            'description' => 'Compacto, 5 pasajeros, 3 maletas, A/C, transmisión automática. Versátil y moderno.',
+            'transmission' => 'Automática',
+            'seats' => 5,
+        ]);
+
+        \App\Models\Vehicle::create([
+            'name' => 'FORD F150',
+            'price' => 289732,
+            'image' => 'https://dce.outletrentalcars.com/vehicle_agency/AL/PPAR_US.png',
+            'description' => 'Pick Up Premium, 4 pasajeros, 4 maletas, A/C, transmisión automática. Potencia y espacio para cualquier necesidad.',
+            'transmission' => 'Automática',
+            'seats' => 4,
+        ]);
+
+        \App\Models\Vehicle::create([
+            'name' => 'TOYOTA Corolla',
+            'price' => 288511,
+            'image' => 'https://dce.outletrentalcars.com/vehicle_agency/ZI/ICAR_US.webp',
+            'description' => 'Intermedio, 5 pasajeros, 3 maletas, A/C, transmisión automática. Confiable y eficiente.',
+            'transmission' => 'Automática',
+            'seats' => 5,
+        ]);
+
+        \App\Models\Vehicle::create([
+            'name' => 'FORD Focus',
+            'price' => 289140,
+            'image' => 'https://dce.outletrentalcars.com/vehicle_agency/ZI/CCAR_US.webp',
+            'description' => 'Compacto, 5 pasajeros, 2 maletas, A/C, transmisión automática. Ideal para recorridos urbanos.',
+            'transmission' => 'Automática',
+            'seats' => 5,
+        ]);
+
+        \App\Models\Vehicle::create([
+            'name' => 'MITSUBISHI Mirage',
+            'price' => 268936,
+            'image' => 'https://dce.outletrentalcars.com/vehicle_agency/AL/ECAR_US.webp',
+            'description' => 'Económico, 4 pasajeros, 2 maletas, A/C, transmisión automática. Práctico y eficiente.',
+            'transmission' => 'Automática',
+            'seats' => 4,
         ]);
 // ...existing code...
     }

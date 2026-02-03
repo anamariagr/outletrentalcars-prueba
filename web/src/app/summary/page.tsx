@@ -71,7 +71,7 @@ export default function SummaryPage() {
                             </p>
                             <button
                                 onClick={() => router.push('/')}
-                                className="rounded-lg bg-blue-600 px-8 py-3 text-sm font-bold text-white shadow-md transition hover:bg-blue-700"
+                                className="rounded-lg bg-blue-600 px-8 py-3 text-sm font-bold text-white shadow-md transition hover:bg-blue-700 cursor-pointer"
                             >
                                 Volver al Inicio
                             </button>
@@ -103,26 +103,22 @@ export default function SummaryPage() {
                 </div>
             </section>
 
-            <section className="bg-[#0F1A4A] py-12">
+            <section className="bg-gradient-to-b from-[#0F1A4A] to-[#3a0097] py-12">
                 <div className="mx-auto max-w-6xl px-6 xl:max-w-7xl">
                     <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
                         <div className="lg:col-span-2 space-y-6">
-                            <VehicleDetailsCard vehicle={selectedVehicle} />
-                            <RentalDetailsCard
-                                city={city}
-                                pickupDate={pickupDate}
-                                returnDate={returnDate}
-                            />
                         </div>
-
-                        <div className="lg:col-span-1">
-                            <PriceSummaryCard
-                                pricePerDay={Number(selectedVehicle.price)}
-                                days={days}
-                                totalPrice={totalPrice}
-                                onConfirm={() => setShowForm(true)}
-                            />
-                        </div>
+                            <div className="lg:col-span-3">
+                                <ReservationForm
+                                    vehicle={selectedVehicle}
+                                    city={city}
+                                    pickupDate={pickupDate}
+                                    returnDate={returnDate}
+                                    days={days}
+                                    totalPrice={totalPrice}
+                                    onConfirm={handleConfirmReservation}
+                                />
+                            </div>
                     </div>
 
                     <Modal
@@ -228,7 +224,7 @@ function PriceSummaryCard({ pricePerDay, days, totalPrice, onConfirm }: PriceSum
 
             <button
                 onClick={onConfirm}
-                className="w-full text-white font-bold py-3 px-4 rounded-lg shadow-md transition-colors"
+                className="w-full text-white font-bold py-3 px-4 rounded-lg shadow-md transition-colors cursor-pointer"
                 style={{ backgroundColor: 'lab(24 24.8 -64.36)' }}
             >
                 Confirmar Reserva

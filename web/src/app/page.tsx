@@ -1,7 +1,8 @@
 import Image from "next/image";
-import SearchForm from "@/components/features/SearchForm";
+import SearchForm from "@/components/features/SearchForm"; // Formulario de búsqueda principal
 
 const destinations = [
+  // Array de destinos populares para mostrar tarjetas
   {
     name: "Miami",
     subtitle: "Playas y city vibes",
@@ -22,6 +23,7 @@ const destinations = [
 export default function Home() {
   return (
     <main className="min-h-screen bg-slate-950 text-white">
+      {/* Header principal */}
       <header className="bg-white text-gray-900">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
          <div className="hidden items-center gap-6 text-sm text-gray-600 md:flex">
@@ -29,10 +31,9 @@ export default function Home() {
         </div>
       </header>
 
+      {/* Sección hero con gradiente y formulario */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-[#0B1B4D] via-[#1A2870] to-[#141A4B]" />
-        
-
         <div className="relative z-10 mx-auto max-w-6xl px-6 py-16 lg:py-24 xl:max-w-7xl">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1.1fr_0.9fr]">
             <div>
@@ -48,6 +49,7 @@ export default function Home() {
                 ahora mismo.
               </p>
             </div>
+            {/* Banner de rebajas */}
             <div className="hidden items-end justify-end lg:flex">
               <div className="flex items-center gap-3 rounded-full bg-white/10 px-4 py-2 text-sm text-white">
                 <span className="h-2 w-2 rounded-full bg-emerald-400" />
@@ -60,6 +62,7 @@ export default function Home() {
             </div>
           </div>
 
+          {/* Formulario de búsqueda */}
           <div className="mt-10">
             <p className="text-sm font-semibold uppercase tracking-widest text-blue-100">
               Busca aquí
@@ -71,6 +74,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Sección de destinos populares */}
       <section className="bg-white py-16 text-gray-900">
         <div className="mx-auto max-w-6xl px-6">
           <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
@@ -86,6 +90,7 @@ export default function Home() {
             </p>
           </div>
 
+          {/* Tarjetas de destinos */}
           <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
             {destinations.map((item) => (
               <div
@@ -93,6 +98,7 @@ export default function Home() {
                 className="group rounded-2xl bg-white p-4 shadow-lg transition hover:bg-gray-50"
               >
                 <div className="h-40 rounded-xl bg-gray-100 flex items-center justify-center overflow-hidden">
+                  {/* Imagen del destino */}
                   <img
                     src={item.image}
                     alt={item.name}

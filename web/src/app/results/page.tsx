@@ -1,13 +1,13 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState, AppDispatch } from '@/store/store';
-import { fetchVehicles, selectVehicle, Vehicle } from '@/store/slices/vehiclesSlice';
-import VehicleCard from '@/components/features/VehicleCard';
-import { useRouter } from 'next/navigation';
-import SearchForm from '@/components/features/SearchForm';
-import BackButton from '@/components/common/BackButton';
+import { useDispatch, useSelector } from 'react-redux'; // Hooks de Redux para estado global
+import { RootState, AppDispatch } from '@/store/store'; // Tipos de Redux
+import { fetchVehicles, selectVehicle, Vehicle } from '@/store/slices/vehiclesSlice'; // Acciones y thunks de vehículos
+import VehicleCard from '@/components/features/VehicleCard'; // Componente: tarjeta individual de vehículo
+import { useRouter } from 'next/navigation'; // Hook de navegación Next.js
+import SearchForm from '@/components/features/SearchForm'; // Componente: formulario de búsqueda
+import BackButton from '@/components/common/BackButton'; // Componente: botón para volver al inicio
 
 export default function ResultsPage() {
     const dispatch = useDispatch<AppDispatch>();
@@ -66,11 +66,12 @@ export default function ResultsPage() {
                 </div>
             </section>
 
-            <section className="bg-[#0F1A4A] py-14">
+            <section className="bg-gradient-to-b from-[#0F1A4A] to-[#3a0097] py-14">
                 <div className="mx-auto max-w-6xl px-6 xl:max-w-7xl">
                     {loading && (
-                        <div className="flex justify-center items-center py-20">
+                        <div className="flex flex-col items-center justify-center py-20 gap-4">
                             <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-300"></div>
+                            <span className="text-blue-100 text-lg font-semibold">Cargando vehículos...</span>
                         </div>
                     )}
 
