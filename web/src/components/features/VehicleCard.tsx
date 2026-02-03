@@ -11,13 +11,13 @@ interface VehicleCardProps {
 export default function VehicleCard({ vehicle, onSelect }: VehicleCardProps) {
     return (
         <div className="bg-white text-black rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col h-full group">
-            <div className="relative h-48 w-full bg-gray-100 overflow-hidden">
-                {/* Placeholder for real image or fallback */}
+            <div className="relative h-48 w-full bg-gray-100 overflow-hidden p-5">
+                {/* Imagen del vehículo  */}
                 <Image
                     src={vehicle.image}
                     alt={vehicle.name}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="object-cover object-scale-down group-hover:scale-105 transition-transform duration-500 p-5"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
             </div>
@@ -43,17 +43,19 @@ export default function VehicleCard({ vehicle, onSelect }: VehicleCardProps) {
                     </span>
                 </div>
 
-                <div className="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
-                    <div>
-                        <span className="text-2xl font-bold" style={{ color: 'lab(29 11.6 -47.9)' }}>${vehicle.price}</span>
-                        <span className="text-gray-500 text-sm"> / día</span>
+                <div className="mt-auto pt-4 border-t border-gray-100 grid grid-cols-2 gap-2">
+                    <div className="flex flex-col items-center justify-center text-center">
+                        <span className="text-2xl font-bold block" style={{ color: 'lab(29 11.6 -47.9)' }}>{Number(vehicle.price).toLocaleString('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 })}</span>
+                        <span className="text-gray-500 text-sm block"> / día</span>
                     </div>
-                    <button
-                        onClick={() => onSelect(vehicle)}
-                        className="bg-gray-900 hover:bg-black text-white font-medium py-2 px-6 rounded-lg transition-colors focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
-                    >
-                        Seleccionar
-                    </button>
+                    <div className="flex flex-col items-center justify-center text-center">
+                        <button
+                            onClick={() => onSelect(vehicle)}
+                            className="bg-gray-900 hover:bg-black text-white font-medium py-2 px-6 rounded-lg transition-colors focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+                        >
+                            Seleccionar
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

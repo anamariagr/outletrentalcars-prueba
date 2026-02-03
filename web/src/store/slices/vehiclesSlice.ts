@@ -1,15 +1,8 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import { Vehicle } from '@/domain/entities/Vehicle';
+import { vehicleService } from '@/services/VehicleService';
 
-// Define Vehicle Type locally for now (move to separate types file later)
-export interface Vehicle {
-    id: number;
-    name: string;
-    price: number;
-    image: string;
-    description: string;
-    transmission: string;
-    seats: number;
-}
+export type { Vehicle };
 
 interface VehiclesState {
     list: Vehicle[];
@@ -25,18 +18,10 @@ const initialState: VehiclesState = {
     error: null,
 };
 
-// Async thunk to fetch vehicles (mock for now, will replace with API call)
+// Obtiene vehículos usando el servicio
 export const fetchVehicles = createAsyncThunk('vehicles/fetchVehicles', async () => {
-    // In a real scenario, this would be: 
-    // const response = await fetch('http://localhost:8000/api/vehicles');
-    // return response.json();
-
-    // Using the real API now since we set it up!
-    const response = await fetch('http://localhost:8000/api/vehicles');
-    if (!response.ok) {
-        throw new Error('Failed to fetch vehicles');
-    }
-    return response.json();
+    const vehicles = await vehicleService.getAll();
+    return vehicles;
 });
 
 const vehiclesSlice = createSlice({

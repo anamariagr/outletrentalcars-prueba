@@ -1,3 +1,7 @@
+/* Utilidad personalizada para object-fit: scale-down */
+.object-scale-down {
+  object-fit: scale-down !important;
+}
 @import "tailwindcss";
 
 :root {
