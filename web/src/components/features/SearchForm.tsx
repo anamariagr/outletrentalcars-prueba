@@ -1,19 +1,30 @@
 "use client";
 
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { setSearchCriteria } from "@/store/slices/searchSlice";
+
 
 export default function SearchForm() {
   const dispatch = useDispatch();
   const router = useRouter();
+  const search = useSelector((state: any) => state.search);
 
   const [formData, setFormData] = useState({
-    city: "",
-    pickupDate: "",
-    returnDate: "",
+    city: search.city || "",
+    pickupDate: search.pickupDate || "",
+    returnDate: search.returnDate || "",
   });
+
+  // Si el store cambia (por ejemplo, al volver de summary), actualiza el formulario
+  useEffect(() => {
+    setFormData({
+      city: search.city || "",
+      pickupDate: search.pickupDate || "",
+      returnDate: search.returnDate || "",
+    });
+  }, [search.city, search.pickupDate, search.returnDate]);
 
 
 
