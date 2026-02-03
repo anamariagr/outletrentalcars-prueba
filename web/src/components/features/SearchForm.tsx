@@ -134,7 +134,8 @@ export default function SearchForm() {
 
         <button
           type="submit"
-          className="flex h-[52px] items-center justify-center rounded-xl bg-blue-600 px-6 text-sm font-bold text-white shadow-lg transition-colors hover:bg-blue-700"
+          className="flex h-[52px] items-center justify-center rounded-xl px-6 text-sm font-bold text-white shadow-lg transition-colors"
+          style={{ backgroundColor: 'lab(24 24.8 -64.36)' }}
         >
           Buscar
         </button>

@@ -10,7 +10,7 @@ interface VehicleCardProps {
 
 export default function VehicleCard({ vehicle, onSelect }: VehicleCardProps) {
     return (
-        <div className="bg-white text-black border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col h-full group">
+        <div className="bg-white text-black rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col h-full group">
             <div className="relative h-48 w-full bg-gray-100 overflow-hidden">
                 {/* Placeholder for real image or fallback */}
                 <Image
@@ -45,7 +45,7 @@ export default function VehicleCard({ vehicle, onSelect }: VehicleCardProps) {
 
                 <div className="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
                     <div>
-                        <span className="text-2xl font-bold text-blue-600">${vehicle.price}</span>
+                        <span className="text-2xl font-bold" style={{ color: 'lab(29 11.6 -47.9)' }}>${vehicle.price}</span>
                         <span className="text-gray-500 text-sm"> / día</span>
                     </div>
                     <button

@@ -2,9 +2,21 @@ import Image from "next/image";
 import SearchForm from "@/components/features/SearchForm";
 
 const destinations = [
-  { name: "Miami", subtitle: "Playas y city vibes" },
-  { name: "Orlando", subtitle: "Parques y aventuras" },
-  { name: "Los Ángeles", subtitle: "Ruta costera" },
+  {
+    name: "Miami",
+    subtitle: "Playas y city vibes",
+    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" // Miami
+  },
+  {
+    name: "Orlando",
+    subtitle: "Parques y aventuras",
+    image: "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" // Orlando
+  },
+  {
+    name: "Los Ángeles",
+    subtitle: "Ruta costera",
+    image: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=400&q=80" // Los Ángeles
+  },
 ];
 
 export default function Home() {
@@ -12,35 +24,14 @@ export default function Home() {
     <main className="min-h-screen bg-slate-950 text-white">
       <header className="bg-white text-gray-900">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <div className="flex items-center gap-2">
-            <span className="text-2xl font-black tracking-tight text-gray-900">
-              outlet
-            </span>
-            <span className="text-xs uppercase tracking-widest text-gray-500">
-              by Miles Car Rental
-            </span>
-          </div>
-          <div className="hidden items-center gap-6 text-sm text-gray-600 md:flex">
-            <span className="rounded-full bg-gray-100 px-3 py-1 text-xs font-semibold text-gray-700">
-              COP
-            </span>
-            <span>Español</span>
-            <span className="h-8 w-8 rounded-full bg-gray-100" />
-          </div>
+         <div className="hidden items-center gap-6 text-sm text-gray-600 md:flex">
+           </div>
         </div>
       </header>
 
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-[#0B1B4D] via-[#1A2870] to-[#141A4B]" />
-        <div className="absolute inset-y-0 right-0 hidden w-[48%] xl:w-[52%] lg:block pointer-events-none">
-          <Image
-            src="/hero-car.svg"
-            alt="Auto en carretera"
-            fill
-            priority
-            className="object-cover object-right"
-          />
-        </div>
+        
 
         <div className="relative z-10 mx-auto max-w-6xl px-6 py-16 lg:py-24 xl:max-w-7xl">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1.1fr_0.9fr]">
@@ -80,7 +71,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[#0F1A4A] py-16">
+      <section className="bg-white py-16 text-gray-900">
         <div className="mx-auto max-w-6xl px-6">
           <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             <div>
@@ -89,7 +80,7 @@ export default function Home() {
               </h2>
               <div className="mt-2 h-1 w-16 rounded-full bg-emerald-400" />
             </div>
-            <p className="max-w-xl text-sm text-blue-100">
+            <p className="max-w-xl text-sm text-gray-700">
               Aprovecha nuestras ofertas especiales y ahorra en tu alquiler de
               auto.
             </p>
@@ -99,12 +90,18 @@ export default function Home() {
             {destinations.map((item) => (
               <div
                 key={item.name}
-                className="group rounded-2xl bg-white/5 p-4 shadow-lg transition hover:bg-white/10"
+                className="group rounded-2xl bg-white p-4 shadow-lg transition hover:bg-gray-50"
               >
-                <div className="h-40 rounded-xl bg-gradient-to-br from-blue-500/40 to-indigo-500/20" />
+                <div className="h-40 rounded-xl bg-gray-100 flex items-center justify-center overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="object-cover w-full h-full"
+                  />
+                </div>
                 <div className="mt-4">
-                  <h3 className="text-lg font-semibold">{item.name}</h3>
-                  <p className="text-sm text-blue-100">{item.subtitle}</p>
+                  <h3 className="text-lg font-semibold text-gray-900">{item.name}</h3>
+                  <p className="text-sm text-gray-600">{item.subtitle}</p>
                 </div>
               </div>
             ))}

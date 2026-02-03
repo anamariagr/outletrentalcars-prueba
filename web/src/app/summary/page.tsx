@@ -18,14 +18,12 @@ export default function SummaryPage() {
     const [showForm, setShowForm] = useState(false);
     const [isConfirmed, setIsConfirmed] = useState(false);
 
-    // Use custom hook for rental calculations (SRP)
     const { days, totalPrice } = useRentalCalculation(
         selectedVehicle?.price,
         pickupDate,
         returnDate
     );
 
-    // Redirect if no vehicle selected
     useEffect(() => {
         if (!selectedVehicle) {
             router.push('/results');
@@ -57,73 +55,88 @@ export default function SummaryPage() {
 
     if (isConfirmed) {
         return (
-            <main className="min-h-screen bg-gray-50 py-20 px-4 flex justify-center items-center">
-                <div className="bg-white p-10 rounded-xl shadow-lg text-center max-w-lg">
-                    <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <svg className="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                        </svg>
+            <main className="min-h-screen bg-slate-950 text-white">
+                <section className="relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#0B1B4D] via-[#1A2870] to-[#141A4B]" />
+                    <div className="relative z-10 mx-auto max-w-6xl px-6 py-20 xl:max-w-7xl">
+                        <div className="rounded-2xl border border-white/10 bg-white/10 p-10 text-center shadow-2xl backdrop-blur">
+                            <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-emerald-400/20">
+                                <svg className="h-10 w-10 text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                            <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">¡Reserva Confirmada!</h1>
+                            <p className="text-blue-100 mb-8">
+                                Tu reserva del <strong>{selectedVehicle.name}</strong> ha sido procesada correctamente.
+                            </p>
+                            <button
+                                onClick={() => router.push('/')}
+                                className="rounded-lg bg-blue-600 px-8 py-3 text-sm font-bold text-white shadow-md transition hover:bg-blue-700"
+                            >
+                                Volver al Inicio
+                            </button>
+                        </div>
                     </div>
-                    <h1 className="text-3xl font-bold text-gray-900 mb-4">¡Reserva Confirmada!</h1>
-                    <p className="text-gray-600 mb-8">
-                        Tu reserva del <strong>{selectedVehicle.name}</strong> ha sido procesada correctamente.
-                    </p>
-                    <button
-                        onClick={() => router.push('/')}
-                        className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-colors"
-                    >
-                        Volver al Inicio
-                    </button>
-                </div>
+                </section>
             </main>
         );
     }
 
     return (
-        <main className="min-h-screen bg-gray-50 py-10 px-4">
-            <div className="max-w-4xl mx-auto">
-                <div className="flex items-center mb-4">
-                    <BackButton to="/results" label="Volver al buscador" />
-                    <h1 className="text-3xl font-bold text-gray-900 border-b pb-4 flex-1">
+        <main className="min-h-screen bg-slate-950 text-white">
+            <section className="relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0B1B4D] via-[#1A2870] to-[#141A4B]" />
+                <div className="relative z-10 mx-auto max-w-6xl px-6 py-14 lg:py-18 xl:max-w-7xl">
+                    <div className="flex items-center gap-2">
+                        <BackButton
+                            to="/results"
+                            label="Volver al buscador"
+                            className="text-white/80 hover:text-white"
+                        />
+                        <p className="text-xs font-semibold uppercase tracking-widest text-blue-100">
+                            Resumen
+                        </p>
+                    </div>
+                    <h1 className="mt-4 text-3xl md:text-4xl font-black">
                         Resumen de tu Reserva
                     </h1>
                 </div>
+            </section>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {/* Vehicle Details Section */}
-                    <div className="md:col-span-2 space-y-6">
-                        <VehicleDetailsCard vehicle={selectedVehicle} />
-                        <RentalDetailsCard
-                            city={city}
-                            pickupDate={pickupDate}
-                            returnDate={returnDate}
-                        />
+            <section className="bg-[#0F1A4A] py-12">
+                <div className="mx-auto max-w-6xl px-6 xl:max-w-7xl">
+                    <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+                        <div className="lg:col-span-2 space-y-6">
+                            <VehicleDetailsCard vehicle={selectedVehicle} />
+                            <RentalDetailsCard
+                                city={city}
+                                pickupDate={pickupDate}
+                                returnDate={returnDate}
+                            />
+                        </div>
+
+                        <div className="lg:col-span-1">
+                            <PriceSummaryCard
+                                pricePerDay={Number(selectedVehicle.price)}
+                                days={days}
+                                totalPrice={totalPrice}
+                                onConfirm={() => setShowForm(true)}
+                            />
+                        </div>
                     </div>
 
-                    {/* Price Summary Section */}
-                    <div className="md:col-span-1">
-                        <PriceSummaryCard
-                            pricePerDay={Number(selectedVehicle.price)}
-                            days={days}
-                            totalPrice={totalPrice}
-                            onConfirm={() => setShowForm(true)}
-                        />
-                    </div>
+                    <Modal
+                        isOpen={showForm}
+                        onClose={() => setShowForm(false)}
+                        title="Completa tu reserva"
+                    >
+                        <ReservationForm onSubmit={handleConfirmReservation} />
+                    </Modal>
                 </div>
-
-                <Modal
-                    isOpen={showForm}
-                    onClose={() => setShowForm(false)}
-                    title="Completa tu reserva"
-                >
-                    <ReservationForm onSubmit={handleConfirmReservation} />
-                </Modal>
-            </div>
+            </section>
         </main>
     );
 }
-
-// Extracted sub-components for better organization (SRP)
 
 interface VehicleDetailsCardProps {
     vehicle: {
@@ -137,7 +150,7 @@ interface VehicleDetailsCardProps {
 
 function VehicleDetailsCard({ vehicle }: VehicleDetailsCardProps) {
     return (
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+        <div className="bg-white rounded-xl shadow-sm overflow-hidden text-gray-900">
             <div className="relative h-64 w-full bg-gray-100">
                 <Image
                     src={vehicle.image}
@@ -166,7 +179,7 @@ interface RentalDetailsCardProps {
 
 function RentalDetailsCard({ city, pickupDate, returnDate }: RentalDetailsCardProps) {
     return (
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+        <div className="bg-white rounded-xl shadow-sm p-6 text-gray-900">
             <h3 className="text-lg font-bold text-gray-900 mb-4">
                 Detalles de Recogida y Devolución
             </h3>
@@ -195,7 +208,7 @@ interface PriceSummaryCardProps {
 
 function PriceSummaryCard({ pricePerDay, days, totalPrice, onConfirm }: PriceSummaryCardProps) {
     return (
-        <div className="bg-white rounded-xl shadow-lg border border-blue-100 p-6 sticky top-6">
+        <div className="bg-white rounded-xl shadow-lg p-6 sticky top-6 text-gray-900">
             <h3 className="text-xl font-bold text-gray-900 mb-6">Desglose de Precio</h3>
 
             <div className="space-y-3 mb-6">
@@ -215,7 +228,8 @@ function PriceSummaryCard({ pricePerDay, days, totalPrice, onConfirm }: PriceSum
 
             <button
                 onClick={onConfirm}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg shadow-md transition-colors"
+                className="w-full text-white font-bold py-3 px-4 rounded-lg shadow-md transition-colors"
+                style={{ backgroundColor: 'lab(24 24.8 -64.36)' }}
             >
                 Confirmar Reserva
             </button>

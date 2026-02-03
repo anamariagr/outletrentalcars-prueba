@@ -5,19 +5,24 @@ import { useRouter } from 'next/navigation';
 interface BackButtonProps {
     to: string;
     label?: string;
+    className?: string;
 }
 
 /**
  * Reusable Back Button component
  */
-export default function BackButton({ to, label = 'Volver' }: BackButtonProps) {
+export default function BackButton({
+    to,
+    label = 'Volver',
+    className = '',
+}: BackButtonProps) {
     const router = useRouter();
 
     return (
         <button
             type="button"
             onClick={() => router.push(to)}
-            className="mr-2 text-blue-600 hover:text-blue-800 text-2xl"
+            className={`mr-2 text-blue-600 hover:text-blue-800 text-2xl ${className}`}
             aria-label={label}
         >
             <svg
