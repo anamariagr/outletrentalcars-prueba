@@ -1,36 +1,42 @@
-# Alquiler de Autos - Proyecto Full Stack
 
-## 🚀 Cómo ejecutar el proyecto
+# Alquiler de Autos 
 
-### 1. Requisitos previos
+ 🚀 guia para ejecutar el proyecto 
+
+ 1. Requisitos previos
+
 - Node.js >= 18
 - npm >= 9
 - PHP >= 8.1
 - Composer
 - MySQL
 
-### 2. Clonar el repositorio
+
+# 2. Clonar el repositorio
+
 ```bash
 git clone <url-del-repo>
 cd alquiler-autos
 ```
 
-### 3. Instalar dependencias
-#### Frontend (Next.js)
+
+# 3. Instalar dependencias
+
 ```bash
 cd web
 npm install
 ```
-#### Backend (Laravel)
-```bash
+## Backend (Laravel)
 cd ../api
 composer install
 cp .env.example .env
 php artisan key:generate
 ```
 
-### 4. Configurar la base de datos
-- Crea una base de datos MySQL llamada `autos`.
+
+### 4.  base de datos
+- Crea base de datos MySQL llamada `autos`.
+
 - Ajusta las credenciales en `api/.env`.
 
 ### 5. Ejecutar migraciones y seeders
@@ -56,27 +62,21 @@ npm run dev
 ---
 
 
-### Separación Frontend/Backend
-Decidí separar el frontend (Next.js) y el backend (Laravel) porque quería practicar una arquitectura moderna, escalable y fácil de mantener.
+Frontend/Backend
+usé next.js para el ejercicio como se indico en la prueba y laravel para la parte de back ya para el funcionamiento de la base de datos y la información que va hacia el front.
 
-### Next.js + TypeScript
-Usé Next.js ya que me da SSR (Server Side Rendering) y una estructura clara para páginas y rutas. TypeScript lo elegí porque me ayuda a evitar errores tontos y hace el código más fácil de entender.
+ya que next me da SSR 
+y una estructura clara para páginas y rutas. TypeScript me ayuda a evitar errores y hace el código más fácil de entender.
 
-### Laravel para la API
-Laravel es súper productivo para crear APIs REST. Me gusta su sistema de migraciones y seeders, así puedo poblar la base de datos rápido y de forma reproducible.
+Laravel es súper funcional para crear APIs REST. Me gusta su sistema de migraciones y seeders, así puedo poblar la base de datos rápido y ya que ha sido uno de mis principales frameworks en mi experiencia lo decidí utilizar.
 
-### Redux Toolkit
-Aunque para un proyecto chico podría usar solo useState, use coo se indicaba, Redux Toolkit para practicar manejo de estado global y porque facilita escalar la app si crece.
+use Redux Toolkit para practicar manejo de estado global y porque facilita escalar la app si crece.
 
-### Tailwind CSS
-Usé Tailwind y esto me permitio prototipar rápido y mantener estilos consistentes sin pelearme con archivos CSS enormes.
+Tailwind CSS
+se uso Tailwind lo que me permitio prototipar rápido y mantener estilos consistentes sin tener que usar archivos CSS muy grandes.
 
-### Clean Code y SOLID
-Intenté aplicar principios de Clean Code y SOLID: componentes pequeños, funciones con una sola responsabilidad y lógica desacoplada. Así, si tengo que cambiar algo, no rompo todo lo demás.
+Intenté aplicar principios de Clean Code y SOLID: componentes pequeños, funciones con una sola responsabilidad y lógica. y si por alguna rason tuviera que cambiar algo, no rompo todo lo demás.
 
-### Hooks y Thunks
 Usé hooks personalizados para separar lógica de negocio (como el cálculo de precios) y thunks para manejar llamadas asíncronas a la API.
 
 ---
-
-
