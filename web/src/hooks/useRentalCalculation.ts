@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { calculateRentalDays, calculateTotalPrice } from '@/utils/dateUtils';
+import { reservationUseCase } from '@/domain/useCases/ReservationUseCase';
 
 interface RentalCalculationResult {
     days: number;
@@ -7,11 +7,8 @@ interface RentalCalculationResult {
 }
 
 /**
- * Custom hook to calculate rental days and total price
- * @param pricePerDay - Daily rental price
- * @param pickupDate - Pickup date string
- * @param returnDate - Return date string
- * @returns Calculated days and total price
+ * Hook personalizado para cálculo de precios de alquiler
+ * Delega la lógica de negocio al domain layer
  */
 export function useRentalCalculation(
     pricePerDay: number | string | undefined,
@@ -23,8 +20,11 @@ export function useRentalCalculation(
 
     useEffect(() => {
         if (pickupDate && returnDate && pricePerDay !== undefined) {
-            const rentalDays = calculateRentalDays(pickupDate, returnDate);
-            const total = calculateTotalPrice(pricePerDay, rentalDays);
+            const price = typeof pricePerDay === 'string' ? parseFloat(pricePerDay) : pricePerDay;
+            
+            // Usa el Use Case para cálculos de negocio
+            const rentalDays = reservationUseCase.calculateDays(pickupDate, returnDate);
+            const total = reservationUseCase.calculateTotalPrice(price, rentalDays);
 
             setDays(rentalDays);
             setTotalPrice(total);

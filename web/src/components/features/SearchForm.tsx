@@ -15,11 +15,14 @@ export default function SearchForm() {
     returnDate: "",
   });
 
+
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -96,6 +99,7 @@ export default function SearchForm() {
               onChange={handleChange}
               className="w-full bg-transparent text-sm font-semibold text-gray-900 outline-none"
               required
+              min={new Date().toISOString().split('T')[0]}
             />
           </div>
         </div>
@@ -128,6 +132,7 @@ export default function SearchForm() {
               onChange={handleChange}
               className="w-full bg-transparent text-sm font-semibold text-gray-900 outline-none"
               required
+              min={formData.pickupDate || new Date().toISOString().split('T')[0]}
             />
           </div>
         </div>

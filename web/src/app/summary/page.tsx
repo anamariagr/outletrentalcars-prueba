@@ -83,57 +83,43 @@ export default function SummaryPage() {
     }
 
     return (
-        <main className="min-h-screen bg-slate-950 text-white">
-            <section className="relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-[#0B1B4D] via-[#1A2870] to-[#141A4B]" />
-                <div className="relative z-10 mx-auto max-w-6xl px-6 py-14 lg:py-18 xl:max-w-7xl">
-                    <div className="flex items-center gap-2">
-                        <BackButton
-                            to="/results"
-                            label="Volver al buscador"
-                            className="text-white/80 hover:text-white"
+        <main className="min-h-screen bg-gradient-to-br from-[#0B1B4D] via-[#1A2870] to-[#141A4B] flex flex-col items-center justify-center p-0">
+            <div className="w-full max-w-4xl mx-auto flex flex-col items-center justify-center min-h-screen py-10 px-4">
+                <div className="w-full flex items-center gap-2 mb-6">
+                    <BackButton
+                        to="/results"
+                        label="Volver al buscador"
+                        className="text-white/80 hover:text-white"
+                    />
+                    <p className="text-xs font-semibold uppercase tracking-widest text-blue-100">
+                        Resumen
+                    </p>
+                </div>
+                <h1 className="text-4xl md:text-5xl font-black text-center mb-10 text-white drop-shadow-lg">
+                    Resumen de tu Reserva
+                </h1>
+                <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+                    <div className="md:col-span-2 space-y-8">
+                        <VehicleDetailsCard vehicle={selectedVehicle} />
+                        <RentalDetailsCard city={city} pickupDate={pickupDate} returnDate={returnDate} />
+                    </div>
+                    <div className="md:col-span-1">
+                        <PriceSummaryCard
+                            pricePerDay={Number(selectedVehicle.price)}
+                            days={days}
+                            totalPrice={totalPrice}
+                            onConfirm={() => setShowForm(true)}
                         />
-                        <p className="text-xs font-semibold uppercase tracking-widest text-blue-100">
-                            Resumen
-                        </p>
                     </div>
-                    <h1 className="mt-4 text-3xl md:text-4xl font-black">
-                        Resumen de tu Reserva
-                    </h1>
                 </div>
-            </section>
-
-            <section className="bg-[#0F1A4A] py-12">
-                <div className="mx-auto max-w-6xl px-6 xl:max-w-7xl">
-                    <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-                        <div className="lg:col-span-2 space-y-6">
-                            <VehicleDetailsCard vehicle={selectedVehicle} />
-                            <RentalDetailsCard
-                                city={city}
-                                pickupDate={pickupDate}
-                                returnDate={returnDate}
-                            />
-                        </div>
-
-                        <div className="lg:col-span-1">
-                            <PriceSummaryCard
-                                pricePerDay={Number(selectedVehicle.price)}
-                                days={days}
-                                totalPrice={totalPrice}
-                                onConfirm={() => setShowForm(true)}
-                            />
-                        </div>
-                    </div>
-
-                    <Modal
-                        isOpen={showForm}
-                        onClose={() => setShowForm(false)}
-                        title="Completa tu reserva"
-                    >
-                        <ReservationForm onSubmit={handleConfirmReservation} />
-                    </Modal>
-                </div>
-            </section>
+            </div>
+            <Modal
+                isOpen={showForm}
+                onClose={() => setShowForm(false)}
+                title="Completa tu reserva"
+            >
+                <ReservationForm onSubmit={handleConfirmReservation} />
+            </Modal>
         </main>
     );
 }
@@ -156,7 +142,7 @@ function VehicleDetailsCard({ vehicle }: VehicleDetailsCardProps) {
                     src={vehicle.image}
                     alt={vehicle.name}
                     fill
-                    className="object-cover"
+                    className="object-scale-down"
                 />
             </div>
             <div className="p-6">
@@ -214,7 +200,7 @@ function PriceSummaryCard({ pricePerDay, days, totalPrice, onConfirm }: PriceSum
             <div className="space-y-3 mb-6">
                 <div className="flex justify-between text-gray-600">
                     <span>Precio por día</span>
-                    <span>${pricePerDay.toFixed(2)}</span>
+                    <span>{pricePerDay.toLocaleString('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 })}</span>
                 </div>
                 <div className="flex justify-between text-gray-600">
                     <span>Duración</span>
@@ -222,7 +208,7 @@ function PriceSummaryCard({ pricePerDay, days, totalPrice, onConfirm }: PriceSum
                 </div>
                 <div className="border-t pt-3 flex justify-between text-lg font-bold text-gray-900">
                     <span>Total</span>
-                    <span className="text-blue-600">${totalPrice.toFixed(2)}</span>
+                    <span className="text-blue-600">{totalPrice.toLocaleString('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 })}</span>
                 </div>
             </div>
 
