@@ -6,9 +6,7 @@ interface RentalCalculationResult {
     totalPrice: number;
 }
 
-/**
- * Hook personalizado para cálculo de precios de alquiler
- */
+
 export function useRentalCalculation(
     pricePerDay: number | string | undefined,
     pickupDate: string,

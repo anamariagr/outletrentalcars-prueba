@@ -9,7 +9,7 @@ import VehicleCard from '@/components/features/VehicleCard'; // Componente: tarj
 import { useRouter } from 'next/navigation'; // Hook de navegación Next.js
 import SearchForm from '@/components/features/SearchForm'; // Componente: formulario de búsqueda
 import BackButton from '@/components/common/BackButton'; // Componente: botón para volver al inicio
-<<<<<<< HEAD
+
 
 import Modal from '@/components/common/Modal';
 
