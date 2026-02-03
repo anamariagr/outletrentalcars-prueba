@@ -1,0 +1,27 @@
+<svg width="1400" height="900" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="paint0" x1="0" y1="0" x2="1400" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B1B4D"/>
+      <stop offset="1" stop-color="#1B2A7A"/>
+    </linearGradient>
+    <linearGradient id="paint1" x1="0" y1="0" x2="0" y2="1" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2D3EEB" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#6D7BFF" stop-opacity="0.2"/>
+    </linearGradient>
+    <radialGradient id="paint2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1000 250) rotate(100) scale(320 420)">
+      <stop stop-color="#60A5FA" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#60A5FA" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1400" height="900" fill="url(#paint0)"/>
+  <ellipse cx="1020" cy="220" rx="340" ry="260" fill="url(#paint2)"/>
+  <path d="M110 640C140 560 240 520 420 520H760C860 520 940 540 1000 580L1180 700C1210 720 1225 750 1220 785C1215 820 1188 842 1150 848L1010 868C980 872 955 850 960 820L970 770H430L410 820C404 850 377 872 346 868L210 848C172 842 145 820 140 785C135 750 150 720 180 700L110 640Z" fill="url(#paint1)"/>
+  <circle cx="430" cy="770" r="70" fill="#0B102B"/>
+  <circle cx="430" cy="770" r="36" fill="#1F2A64"/>
+  <circle cx="970" cy="770" r="70" fill="#0B102B"/>
+  <circle cx="970" cy="770" r="36" fill="#1F2A64"/>
+  <path d="M560 560C600 510 700 480 820 480H960C1020 480 1070 500 1110 540L1160 580H640C600 580 570 570 560 560Z" fill="#E5E7EB" fill-opacity="0.25"/>
+  <path d="M220 650H1080" stroke="#93C5FD" stroke-opacity="0.6" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="320" cy="330" r="18" stroke="#22C55E" stroke-width="6" stroke-dasharray="8 10"/>
+  <circle cx="880" cy="180" r="36" stroke="#38BDF8" stroke-width="8" stroke-dasharray="12 14"/>
+</svg>
