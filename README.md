@@ -1,7 +1,7 @@
 
 # Alquiler de Autos 
 
- 🚀 guia para ejecutar el proyecto 
+ guia para ejecutar el proyecto 
 
  1. Requisitos previos
 
